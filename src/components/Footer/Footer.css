@@ -24,6 +24,8 @@
 }
 
 .copyright-text{
+    display: block;
+    text-align: center;
     color: gray;
     font-size: 14px;
 }
