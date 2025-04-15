@@ -35,22 +35,22 @@ A full-featured Netflix clone built using **React.js** and **Firebase Authentica
 
 ## 🔧 Installation
 
-# Clone the repository
 ```bash
+# Clone the repository
 git clone https://github.com/mukeshchau407/Netflix-Clone.git
 ```
 
-# Go into the project directory
 ```bash
+# Go into the project directory
 cd Netflix-Clone
 ```
 
-# Install dependencies
 ```bash
+# Install dependencies
 npm install
 ```
 
-# Run the development server
 ```bash
+# Run the development server
 npm run dev
 ```
