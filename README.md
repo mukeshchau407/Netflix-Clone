@@ -1,12 +1,49 @@
-# React + Vite
+# 📺 Netflix Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured Netflix clone built using **React.js** and **Firebase Authentication**. This project replicates the core features of Netflix including a responsive UI, authentication, and a switchable Sign In/Sign Up form.
 
-Currently, two official plugins are available:
+> 🔗 **Live Preview:** _Coming Soon_  
+> 👨‍💻 **Developer:** [Mukesh Chauhan](https://github.com/mukeshchau407)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 **Firebase Authentication**
+  - Email/Password Sign In & Sign Up
+  - Toggle between login/register views
+- 🎨 **Modern UI/UX**
+  - Netflix-style layout
+  - Responsive across all devices
+- 🧠 **React Hooks**
+  - `useState` and `useEffect` for state management
+- 📁 Clean Project Structure
+  - Organized into components & pages
+
+---
+
+## 🛠️ Tech Stack
+
+| Tech           | Usage                           |
+|----------------|----------------------------------|
+| **React.js**   | Frontend UI framework            |
+| **Firebase**   | Authentication & backend config  |
+| **CSS**        | Styling                          |
+| **Vite / CRA** | Development environment (React)  |
+
+---
+
+## 🔧 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/mukeshchau407/Netflix-Clone.git
+
+# Go into the project directory
+cd Netflix-Clone
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
