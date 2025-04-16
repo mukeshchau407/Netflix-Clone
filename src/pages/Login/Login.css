@@ -56,6 +56,10 @@
     cursor: pointer;
 }
 
+.login-form button:hover{
+    background: #e50914e3;
+}
+
 .form-help{
     display: flex;
     align-items: center;
