@@ -3,7 +3,7 @@
 A full-featured Netflix clone built using **React.js** and **Firebase Authentication**. This project replicates the core features of Netflix including a responsive UI, authentication, and a switchable Sign In/Sign Up form.
 
 > 🔗 **Live Preview:** _Coming Soon_  
-> 👨‍💻 **Developer:** [Mukesh Chauhan](https://github.com/mukeshchau407)
+> 👨‍💻 **Developer:** [Mukesh Chaudhary](https://github.com/mukeshchau407)
 
 ---
 
@@ -35,8 +35,8 @@ A full-featured Netflix clone built using **React.js** and **Firebase Authentica
 
 ## 🔧 Installation
 
-** Clone the repository **
 ```bash
+# Clone the repository
 git clone https://github.com/mukeshchau407/Netflix-Clone.git
 ```
 
@@ -54,3 +54,7 @@ npm install
 # Run the development server
 npm run dev
 ```
+
+## 📷 Screenshot
+
+![Netflix Clone UI](/public/image.png)
