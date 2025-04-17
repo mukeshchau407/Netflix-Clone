@@ -17,20 +17,20 @@ const Footer = () => {
       </div>
 
       <ul>
-        <li>Audio Description</li>
-        <li>Help Centre</li>
-        <li>Gift Cards</li>
-        <li>Media Centre</li>
-        <li>Investor Relations</li>
-        <li>Jobs</li>
-        <li>Terms of Use</li>
-        <li>Privacy</li>
-        <li>Legal Notices</li>
-        <li>Cookie Preferences</li>
-        <li>Corporate Information</li>
-        <li>Contact Us</li>
+        <li><a href="#">Audio Description</a></li>
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Media Centre</a></li>
+        <li><a href="#">Investor Relations</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Legal Notices</a></li>
+        <li><a href="#">Cookie Preferences</a></li>
+        <li><a href="#">Corporate Information</a></li>
+        <li><a href="#">Contact Us</a></li>
       </ul>
-      <p className='copyright-text'>© 1997-2024 Netflix, Inc.</p>
+      <p className='copyright-text'>© 1997-2025 Netflix, Inc.</p>
     </div>
   )
 }
