@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Player.css"; // We'll create this CSS file next
+import "./Player.css";
 
 const Player = ({ movieId, onClose }) => {
   const [videoData, setVideoData] = useState({
@@ -33,7 +33,6 @@ const Player = ({ movieId, onClose }) => {
     )
       .then((res) => res.json())
       .then((movieDetails) => {
-        // Then fetch videos
         fetch(
           `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
           options
@@ -67,13 +66,10 @@ const Player = ({ movieId, onClose }) => {
   return (
     <div className="popup-overlay" onClick={onClose}>
       <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-        {/* <div className="popup-header">
+        <div className="video-container">
           <button className="popup-close" onClick={onClose}>
             &times;
           </button>
-        </div> */}
-
-        <div className="video-container">
           {loading ? (
             <div className="loading-state">
               <div className="spinner"></div>
@@ -87,7 +83,7 @@ const Player = ({ movieId, onClose }) => {
               <iframe
                 src={`https://www.youtube.com/embed/${
                   videoData.key
-                }?autoplay=1&mute=${isMuted ? 1 : 0}`}
+                }?autoplay=1&mute=${isMuted ? 0 : 1}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -108,8 +104,18 @@ const Player = ({ movieId, onClose }) => {
           )}
         </div>
         <div className="popup-footer">
-          <button className="button play-button">▶ Play</button>
-          <button className="button add-button">+ My List</button>
+          <button className="button play-button">
+            <span class="material-symbols-outlined">play_arrow</span> Play
+          </button>
+          <button className="button add-button">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+          <button className="button like-button">
+            <span class="material-symbols-outlined">thumb_up</span>
+          </button>
+          <button className="button like-button">
+            <span class="material-symbols-outlined">thumb_down</span>
+          </button>
         </div>
       </div>
     </div>
