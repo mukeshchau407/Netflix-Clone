@@ -5,9 +5,12 @@ import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
 import play_icon from "../../assets/play_icon.png";
 import info_icon from "../../assets/info_icon.png";
+import Player from "../../pages/Player/Player"; // Import your Player component
 
 const Home = () => {
   const [featuredMovie, setFeaturedMovie] = useState(null);
+  const [showPlayer, setShowPlayer] = useState(false);
+  const [videoKey, setVideoKey] = useState(null);
 
   const options = {
     method: "GET",
@@ -26,14 +29,44 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         const randomIndex = Math.floor(Math.random() * data.results.length);
-        setFeaturedMovie(data.results[randomIndex]);
+        const movie = data.results[randomIndex];
+        setFeaturedMovie(movie);
+
+        // Fetch videos for this movie
+        fetch(
+          `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`,
+          options
+        )
+          .then((res) => res.json())
+          .then((videoData) => {
+            const trailer = videoData.results?.find(
+              (video) => video.type === "Trailer" || video.type === "Teaser"
+            );
+            if (trailer) {
+              setVideoKey(trailer.key);
+            }
+          });
       })
       .catch((err) => console.error(err));
   }, []);
 
+  const handlePlayClick = () => {
+    if (videoKey) {
+      setShowPlayer(true);
+    }
+  };
+
+  const closePlayer = () => {
+    setShowPlayer(false);
+  };
+
   return (
     <div className="home">
       <Navbar />
+      {showPlayer && (
+        <Player movieId={featuredMovie?.id} onClose={closePlayer} />
+      )}
+
       <div className="hero">
         {featuredMovie && (
           <>
@@ -50,7 +83,7 @@ const Home = () => {
                   : featuredMovie.overview}
               </p>
               <div className="hero-btns">
-                <button className="btn">
+                <button className="btn" onClick={handlePlayClick}>
                   <img src={play_icon} alt="Play" />
                   Play
                 </button>
