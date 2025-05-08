@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-config";
 import { ToastContainer } from "react-toastify";
+
 const App = () => {
   const navigate = useNavigate();
 

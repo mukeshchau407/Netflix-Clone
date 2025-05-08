@@ -1,200 +1,249 @@
-.video-player-container {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: #000;
-}
-
-.netflix-video {
-  width: 100%;
-  display: block;
-  cursor: pointer;
-}
-
-.controls-overlay {
-  position: absolute;
+.popup-overlay {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 30%);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(1px);
+  animation: FadeIn 0.3s ease-out;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup-content {
+  width: 70%;
+  /* max-width: 1100px;
+  background: #181818; */
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  transform-origin: center;
+  animation: ScaleIn 0.3s ease-out;
+}
+
+@keyframes ScaleIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.popup-header {
+  display: flex;
   justify-content: space-between;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.controls-overlay.visible {
-  opacity: 1;
-}
-
-.top-controls {
-  display: flex;
   align-items: center;
   padding: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    transparent 100%
+  );
+  position: relative;
+  z-index: 2;
 }
 
-.back-button {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+.popup-close {
+  background: rgba(30, 30, 30, 0.6);
   border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-.video-title {
   color: white;
-  font-size: 18px;
-  margin: 0;
-}
-
-.center-play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid white;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  color: white;
-  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
-.center-play-button.hidden {
-  display: none;
-}
-
-.bottom-controls {
-  padding: 20px;
-}
-
-.progress-container {
-  height: 5px;
+.popup-close:hover {
   background: rgba(255, 255, 255, 0.2);
-  margin-bottom: 15px;
-  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.video-container {
   position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  background: #000;
 }
 
-.progress-bar {
-  height: 100%;
-  background: #e50914;
-  width: 0;
-  transition: width 0.1s linear;
-}
-
-.hover-preview {
+.iframe-container {
   position: absolute;
-  bottom: 15px;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  white-space: nowrap;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.thumbnail-preview {
-  display: block;
-  width: 120px;
-  height: 68px;
-  margin-top: 5px;
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
 }
 
-.control-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.left-controls,
-.right-controls {
-  display: flex;
-  align-items: center;
-}
-
-button {
-  background: transparent;
+.mute-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
-  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
   cursor: pointer;
-  margin: 0 8px;
-  padding: 5px;
+  z-index: 3;
+  transition: all 0.2s;
 }
 
-button:hover {
-  color: #e50914;
-}
-
-.volume-control {
-  display: flex;
-  align-items: center;
-}
-
-.volume-slider {
-  width: 80px;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.time-display {
-  color: white;
-  font-size: 14px;
-  margin-left: 15px;
-}
-
-.skip-intro {
+.mute-button:hover {
   background: rgba(255, 255, 255, 0.2);
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-weight: bold;
+  transform: scale(1.1);
 }
 
-.next-episode-countdown {
+.loading-state {
   position: absolute;
-  bottom: 80px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 10px 15px;
-  border-radius: 4px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: #000;
 }
 
-.cancel-countdown {
-  margin-left: 10px;
-  color: #ccc;
-  text-decoration: underline;
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(229, 9, 20, 0.3);
+  border-radius: 50%;
+  border-top-color: #e50914;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.no-trailer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-trailer-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  color: white;
+  text-align: center;
+}
+
+.movie-overview {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+.popup-footer {
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  background: #181818;
+}
+
+.button {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.play-button {
+  background: #fff;
+  color: #000;
+  border: none;
+}
+
+.play-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.add-button {
+  background: rgba(109, 109, 110, 0.7);
+  color: #fff;
+  border: none;
+}
+
+.add-button:hover {
+  background: rgba(109, 109, 110, 0.5);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .volume-slider {
-    width: 60px;
+  .popup-content {
+    width: 95%;
   }
 
-  .time-display {
-    margin-left: 10px;
-    font-size: 12px;
+  .popup-title {
+    font-size: 1.2rem;
   }
 
-  button {
-    margin: 0 5px;
-    font-size: 14px;
+  .popup-footer {
+    flex-direction: column;
+  }
+
+  .no-trailer-overlay {
+    padding: 20px;
   }
 }
