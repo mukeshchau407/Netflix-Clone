@@ -2,7 +2,7 @@
 
 A full-featured Netflix clone built using **React.js** and **Firebase Authentication**. This project replicates the core features of Netflix including a responsive UI, authentication, and a switchable Sign In/Sign Up form.
 
-> 🔗 **Live Preview:** _Coming Soon_  
+> 🔗 **Live Preview:** https://netflix-clone-three-sand.vercel.app/
 > 👨‍💻 **Developer:** [Mukesh Chaudhary](https://github.com/mukeshchau407)
 
 ---
