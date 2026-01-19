@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import logo from "../../assets/logo.png";
+import logo1 from "../../assets/logo1.png";
 import { login, signup } from "../../firebase-config";
 import netflix_spinner from "../../assets/netflix_spinner.gif";
 import Footer from "../../components/Footer/Footer";
@@ -30,7 +30,7 @@ const Login = () => {
   ) : (
     <>
       <div className="login">
-        <img src={logo} className="login-logo" alt="" />
+        <img src={logo1} className="login-logo" alt="" />
 
         <div className="login-form">
           <h1>{signState}</h1>
